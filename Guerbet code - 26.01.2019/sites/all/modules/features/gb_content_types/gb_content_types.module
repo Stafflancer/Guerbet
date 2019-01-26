@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the GB Content Types feature.
+ */
+
+include_once 'gb_content_types.features.inc';

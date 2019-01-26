@@ -1,0 +1,122 @@
+#
+# Chinese, Simplified translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  baidu_share.admin.inc: n/a
+#  baidu_share.module: n/a
+#  baidu_share.info: n/a
+#  baidu_share.install: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2016-12-22 11:01+0800\n"
+"PO-Revision-Date: 2016-12-22 11:06+0800\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese, Simplified <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Language: zh\n"
+"X-Generator: Poedit 1.8.11\n"
+
+#: baidu_share.admin.inc:16
+msgid "Display Settings"
+msgstr "显示设置"
+
+#: baidu_share.admin.inc:17
+msgid "These are settings for the block. To use the block, go to the <a href=\"@blocks\">blocks</a> page to enable and configure the <em>Baidu Share Button</em> block."
+msgstr "这里是设置区块的配置。要使用该区块，请到 <a href=\"@blocks\">区块</a> 页面启用并配置 <em>Baidu Share Button</em> 区块。"
+
+#: baidu_share.admin.inc:21
+msgid "Page sharing"
+msgstr "页面分享功能"
+
+#: baidu_share.admin.inc:22
+msgid "Image sharing"
+msgstr "图片分享功能"
+
+#: baidu_share.admin.inc:23
+msgid "Word sharing"
+msgstr "划词分享功能 "
+
+#: baidu_share.admin.inc:27
+msgid "16*16"
+msgstr "16*16"
+
+#: baidu_share.admin.inc:28
+msgid "24*24"
+msgstr "24*24"
+
+#: baidu_share.admin.inc:29
+msgid "32*32"
+msgstr "32*32"
+
+#: baidu_share.admin.inc:42
+msgid "Button Settings"
+msgstr "按钮设置"
+
+#: baidu_share.admin.inc:48
+msgid "It can be multi-select code function to support different sharing needs:"
+msgstr "可多选代码功能，支持不同分享需求： "
+
+#: baidu_share.admin.inc:55
+msgid "Button style selection:"
+msgstr "按钮风格选择："
+
+#: baidu_share.admin.inc:62
+msgid "Optional wrapper with CSS:"
+msgstr "可选的带CSS的包装器："
+
+#: baidu_share.admin.inc:65
+msgid "To help with the layout and placement of the button, it will be rendered by default inside a wrapper: \t&lt;div class=\"baidu-share-wrapper\"&gt;\t&lt;/div&gt;. You can enter CSS rules to style this wrapper. By default <em>margin:0 1em 1em 1em;float:right;</em>. To disable totally the wrapper, input the word <em>nowrapper</em>."
+msgstr "为了帮助按钮的布局和放置，它将默认在包装器中呈现：&lt;div  class=\"baidu-share-wrapper\"&gt;\t&lt;/div&gt; 可以输入CSS规则来设置此包装的样式。默认是<em>margin:0 1em 1em 1em;float:right;</em>。要想完全禁用包装器，请输入<em>nowrapper</em>。"
+
+#: baidu_share.module:14
+msgid ""
+"Baidu Share module provides a Baidu Share buttons to nodes and as a separate block. Baidu Share is a popular button embed code for China and provides embed buttons for QQ, Weibo, RenRen and other \n"
+"China social networks."
+msgstr "百度分享模块提供了一个百度分享按钮到节点和作为一个单独的区块。 百度分享是中国流行的一个按钮嵌入代码和提供嵌入 QQ，微博，人人网和其他中国社交网络的按钮。"
+
+#: baidu_share.module:16
+msgid "Baidu Share site: <a href=\"@link\">http://share.baidu.com</a>."
+msgstr "百度分享官网： <a href=\"@link\">http://share.baidu.com</a>。"
+
+#: baidu_share.module:27
+msgid "Administer Baidu Share"
+msgstr "管理百度分享"
+
+#: baidu_share.module:30
+msgid "View Baidu Share"
+msgstr "查看百度分享"
+
+#: baidu_share.module:126;40 baidu_share.info:0
+msgid "Baidu Share"
+msgstr "Baidu Share"
+
+#: baidu_share.module:41
+msgid "Configure Baidu Share settings"
+msgstr "配置百度分享设置"
+
+#: baidu_share.module:48
+msgid "Baidu Share block"
+msgstr "百度分享区块"
+
+#: baidu_share.module:49
+msgid "Configure Baidu Share settings for block"
+msgstr "配置百度分享的设置区块"
+
+#: baidu_share.install:15
+msgid ""
+"To finish enabling Baidu Share Button in your nodes,\n"
+"      visit the <a href=\"@settings\">settings</a> page. And remember to check the\n"
+"      <a href=\"@perm\">permissions</a> to view the button."
+msgstr ""
+"为完成启用百度分享按钮到你的节点，\n"
+"      请访问 <a href=\"@settings\">设置</a> 页面。 同时记得检查\n"
+"      <a href=\"@perm\">权限</a> 来查看按钮。"
+
+#: baidu_share.info:0
+msgid "Adds <em>Share</em> buttons from Baidu Share to each selected node type, as well as a configurable block with a <em>Share</em> box in it."
+msgstr "将 <em>分享</em> 按钮从百度分享添加至选定的内容类型，以及一个带有<em>分享</em>盒子的可配置区块。"

@@ -1,0 +1,154 @@
+<?php
+
+/**
+ * @file
+ * Main module file for the Baidu Share Embed Module.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function baidu_share_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#baidu_share":
+      $output = '<p>' . t('Baidu Share module provides a Baidu Share buttons to nodes and as a separate block. Baidu Share is a popular button embed code for China and provides embed buttons for QQ, Weibo, RenRen and other 
+China social networks.') . '</p>';
+      $output .= '<p>' . t('Baidu Share site: <a href="@link">http://share.baidu.com</a>.', array('@link' => 'http://share.baidu.com')) . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function baidu_share_permission() {
+  return array(
+    'administer Baidu Share' => array(
+      'title' => t('Administer Baidu Share'),
+    ),
+    'view Baidu Share' => array(
+      'title' => t('View Baidu Share'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function baidu_share_menu() {
+  $items['admin/config/services/baidu_share'] = array(
+    'title' => 'Baidu Share',
+    'description' => 'Configure Baidu Share settings',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('administer Baidu Share'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
+  $items['admin/config/services/baidu_share/block'] = array(
+    'title' => 'Baidu Share block',
+    'description' => 'Configure Baidu Share settings for block',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('baidu_share_block_admin_settings'),
+    'access arguments' => array('administer Baidu Share'),
+    'file' => 'baidu_share.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function baidu_share_theme() {
+  return array(
+    'baidu_share_button_block' => array(
+      'arguments' => array(
+        'node' => NULL,
+        'url' => NULL,
+        'css' => '',
+        'baidu_button_size' => '1',
+        'baidu_share_type' => '1',
+      ),
+      'variables' => array('values' => NULL),
+      'template' => 'baidu-share-html',
+    ),
+  );
+}
+
+/**
+ * Implements template_preprocess().
+ *
+ * We prepare variables for use inside the baidu-share-html.tpl.php
+ * template file.
+ */
+function template_preprocess_baidu_share_button_block(&$variables) {
+  $button_type = $variables['baidu_share_type'];
+  $button_size = $variables['baidu_share_size'];
+  if (in_array('2', $button_type)) {
+    $variables['image_share'] = ',"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}';
+  }
+  else {
+    $variables['image_share'] = '';
+  }
+
+  if (in_array('3', $button_type)) {
+    $variables['select_share'] = ',"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}';
+  }
+  else {
+    $variables['select_share'] = '';
+  }
+
+  if ($button_size == 1) {
+    $variables['bd_size'] = 16;
+  }
+  elseif ($button_size == 2) {
+    $variables['bd_size'] = 24;
+  }
+  else {
+    $variables['bd_size'] = 32;
+  }
+
+  if ($variables['css_block'] !== 'nowrapper') {
+    $bd_css = empty($variables['css_block']) ? '' : 'style="' . check_plain($variables['css_block']) . '"';
+    $variables['bd_wrapper_start'] = '<div class="baidu-share-wrapper" ' . $bd_css . '>';
+    $variables['bd_wrapper_end'] = '</div>';
+  }
+  else {
+    $variables['bd_wrapper_start'] = '';
+    $variables['bd_wrapper_end'] = '';
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function baidu_share_block_info($op = 'list', $delta = 0, $edit = array()) {
+  $blocks['baidu_share'] = array(
+    'info' => t('Baidu Share'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function baidu_share_block_view($delta = '') {
+  $block = array();
+  if ($delta == 'baidu_share') {
+    $block['content'] = baidu_share_block_button_generate();
+  }
+  return $block;
+}
+
+/**
+ * Baidu Share block code generation.
+ */
+function baidu_share_block_button_generate() {
+  $default = array(
+    'css_block' => 'margin:0 1em 1em 1em;float:right;',
+    'baidu_share_size' => '1',
+    'baidu_share_type' => array('1', '2', '3'),
+  );
+  $button_settings = array_merge($default, variable_get('baidu_share_block_settings', array()));
+  return theme('baidu_share_button_block', $button_settings);
+}

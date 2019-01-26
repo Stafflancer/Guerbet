@@ -1,0 +1,11 @@
+name = Guerbet.
+description = Guerbet custom theme.
+engine = phptemplate
+base theme = bootstrap
+
+core = 7.x
+
+stylesheets[all][] = less/style.less
+stylesheets[all][] = css/style.css
+
+scripts[] = js/list.js

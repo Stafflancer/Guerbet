@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Enable and uninstall functions for the Baidu Share Button module.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function baidu_share_enable() {
+  $node_types = variable_get('baidu_share_node_types', array());
+
+  if (empty($node_types)) {
+    drupal_set_message(t('To finish enabling Baidu Share Button in your nodes,
+      visit the <a href="@settings">settings</a> page. And remember to check the
+      <a href="@perm">permissions</a> to view the button.',
+        array(
+          '@settings' => url('admin/config/services/baidu_share'),
+          '@perm' => url('admin/people/permissions', array(
+            'fragment' => 'module-baidu_share',
+          )),
+        )
+      )
+    );
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function baidu_share_uninstall() {
+  variable_del('baidu_share_node_types');
+  variable_del('baidu_share_node_location');
+  variable_del('baidu_share_weight');
+  variable_del('baidu_share_appkey');
+  variable_del('baidu_share_showonteasers');
+  variable_del('baidu_share_block_settings');
+  variable_del('baidu_share_settings');
+}

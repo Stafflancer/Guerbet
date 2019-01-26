@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the GB Views feature.
+ */
+
+include_once 'gb_views.features.inc';

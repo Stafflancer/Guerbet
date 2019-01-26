@@ -1,0 +1,4 @@
+name = Custom Guerbet module
+description = Custom Guerbet module.
+package = Custom
+core = 7.x

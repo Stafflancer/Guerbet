@@ -1,0 +1,53 @@
+<?php
+
+
+function custom_guerbet_form_system_site_information_settings_alter(&$form, &$form_state, $form_id) {
+  $form['last_update'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Last update'),
+    '#default_value' => variable_get('custom_guerbet_last_update'),
+  );
+  array_unshift($form['#submit'], 'custom_guerbet_form_last_update');
+
+  return $form;
+}
+
+
+function custom_guerbet_form_last_update(&$form, &$form_state) {
+  $site_information = $form_state['values']['last_update'];
+  variable_set('custom_guerbet_last_update', $site_information);
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function custom_guerbet_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'news_node_form') {
+    $dates = array();
+
+    if (!empty($form['created']['#value'])) {
+      $dates[] = '<p><b>Creation date</b>: ' . date('Y/n/j', $form['created']['#value']) . '</p>';
+    }
+    if (!empty($form['changed']['#default_value'])) {
+      $dates[] = '<p><b>Last modification date</b>: ' . date('Y/n/j', $form['changed']['#default_value']) . '</p>';
+    }
+
+    $form['field_publication_date']['#suffix'] = implode('', $dates);
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function custom_guerbet_views_query_alter(&$view, &$query) {
+  if ($view->name == 'taxonomy_term' && $view->vid != 14) {
+    unset($query->orderby[0]);
+  }
+}
+
+/**
+ * Change site name.
+ */
+// function custom_guerbet_preprocess_html(&$vars) {
+//   $vars['head_title'] = 'Asia Pacific';
+// }
