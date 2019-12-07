@@ -1,4 +1,6 @@
 name = Guerbet.
+developer = Christopher Akinboboye
+developer url = https://stafflancer.com
 description = Guerbet custom theme.
 engine = phptemplate
 base theme = bootstrap
